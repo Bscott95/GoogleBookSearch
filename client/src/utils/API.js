@@ -2,9 +2,9 @@
 import axios from "axios";
 
 export default {
-  search: function (search, limit) {
+  search: function (search) {
     return axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=${limit}`
+      `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=10`
     );
   },
   getAllBooks: function () {

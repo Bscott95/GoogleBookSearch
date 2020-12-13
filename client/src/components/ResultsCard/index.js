@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-export default function ResultsCard( title, author, description, image, Button ) {
+export default function ResultsCard( title, author, description, image ) {
   return (
     <div>
       <Grid container style={{backgroundColor: "#f1f6f9", marginLeft:40, width:'90%'}}>

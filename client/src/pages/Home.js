@@ -13,14 +13,17 @@ export class Home extends Component {
   };
 
   handleInputChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
+    // console.log(q)
+    console.log(value)
     this.setState({
-      [name]: value,
+      q: value,
     });
+    console.log(this.state.q)
   };
 
   getBooks = () => {
-    API.getAllBooks(this.state.q)
+    API.search(this.state.q)
       .then((res) =>
         this.setState({
           books: res.data,
@@ -32,6 +35,18 @@ export class Home extends Component {
           message: "No New Books Found, Try a Different Query",
         })
       );
+    // API.getAllBooks(this.state.q)
+    //   .then((res) =>
+    //     this.setState({
+    //       books: res.data,
+    //     })
+    //   )
+    //   .catch(() =>
+    //     this.setState({
+    //       books: [],
+    //       message: "No Books Found, Try a Different Query",
+    //     })
+    //   );
   };
 
   handleFormSubmit = (event) => {
@@ -77,7 +92,7 @@ export class Home extends Component {
           <ResultsCard
             key={book.id}
             title={book.volumeInfo.title}
-            authors={book.volumeInfo.authors.join(", ")}
+            author={book.volumeInfo.authors.join(", ")}
             description={book.volumeInfo.description}
             image={book.volumeInfo.imageLinks.thumbnail}
           />
