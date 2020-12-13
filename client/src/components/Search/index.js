@@ -16,6 +16,7 @@ export default function Search({ q, handleInputChange, handleFormSubmit }) {
             backgroundColor: "#f1f6f9",
           }}
         >
+          {console.log(q)}
           <h3>Book Search</h3>
           <h5>Book</h5>
           <form>

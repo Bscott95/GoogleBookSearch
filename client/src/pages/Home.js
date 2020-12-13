@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "./../components/Jumbotron";
 import Search from "../components/Search";
-import ResultsCard from "../components/ResultsCard";
+import ResultsPage from "../components/ResultsPage";
 import { Grid } from "@material-ui/core";
 import API from "../utils/API";
 
@@ -26,8 +26,10 @@ export class Home extends Component {
     API.search(this.state.q)
       .then((res) =>
         this.setState({
-          books: res.data,
+          books: res.data.items
         })
+      )
+      .then(console.log(this.state.books)
       )
       .catch(() =>
         this.setState({
@@ -88,8 +90,10 @@ export class Home extends Component {
           }}
         >
           <h3>Results</h3>
+          {console.log(typeof this.state.books)}
+          {console.log(this.state.books)}
           {this.state.books.map(book => (
-          <ResultsCard
+          <ResultsPage
             key={book.id}
             title={book.volumeInfo.title}
             author={book.volumeInfo.authors.join(", ")}
